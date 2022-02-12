@@ -3,18 +3,17 @@ import time
 from tkinter import *
 from threading import *
 import simpleaudio as sa
-import sys
 
 
-def validate_time(alarm_time):
-    if len(alarm_time) != 8:
+def validate_time(time_to_validate):
+    if len(time_to_validate) != 8:
         return "Invalid time format! Please try again (HH:MM:SS)."
     else:
-        if int(alarm_time[0:2]) > 23:
+        if int(time_to_validate[0:2]) > 23:
             return "Invalid HOUR format! Please try again (HH:MM:SS)."
-        elif int(alarm_time[3:5]) > 59:
+        elif int(time_to_validate[3:5]) > 59:
             return "Invalid MINUTE format! Please try again (HH:MM:SS)."
-        elif int(alarm_time[6:8]) > 59:
+        elif int(time_to_validate[6:8]) > 59:
             return "Invalid SECOND format! Please try again (HH:MM:SS)."
         else:
             return "ok"
@@ -30,7 +29,6 @@ alarm_time.grid(column=1, row=0)
 alarm_time.focus()
 
 close_alarm = 1
-
 
 
 def threading():
