@@ -1,6 +1,6 @@
 from datetime import datetime
 import time
-from playsound import playsound
+# from playsound import playsound
 from tkinter import *
 
 
@@ -47,7 +47,9 @@ class GUI:
         alarm_sec = alarm[6:8]
 
         while True:
-            time.sleep(1)
+            for i in range(5):
+                print(i)
+                time.sleep(1)
             now = datetime.now()
             current_hour = now.strftime("%H")
             current_min = now.strftime("%M")
@@ -62,31 +64,3 @@ class GUI:
 
 
 gui = GUI()
-
-# underneath is code to run alarm in console
-
-# while True:
-#     alarm_time = input("Enter time in 'HH:MM:SS' format: ")
-#
-#     validate = validate_time(alarm_time.lower())
-#     if validate != "ok":
-#         print(validate)
-#     else:
-#         print(f"Setting alarm for {alarm_time}...")
-#         break
-# alarm_hour = alarm_time[0:2]
-# alarm_min = alarm_time[3:5]
-# alarm_sec = alarm_time[6:8]
-#
-# while True:
-#     now = datetime.now()
-#     current_hour = now.strftime("%H")
-#     current_min = now.strftime("%M")
-#     current_sec = now.strftime("%S")
-#
-#     if alarm_hour == current_hour:
-#         if alarm_min == current_min:
-#             if alarm_sec <= current_sec:
-#                 print("Wake Up!")
-#                 playsound('laugh.wav')
-#                 break
