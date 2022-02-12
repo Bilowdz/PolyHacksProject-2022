@@ -1,8 +1,8 @@
 from datetime import datetime
 import time
-# from playsound import playsound
 from tkinter import *
 from threading import *
+import simpleaudio as sa
 
 
 def validate_time(alarm_time):
@@ -63,7 +63,10 @@ def clicked():
             if alarm_min == current_min:
                 if alarm_sec <= current_sec:
                     lbl.configure(text="Wake Up!")
-                    # playsound('laugh.wav')
+                    for i in range(2):
+                        wave_object = sa.WaveObject.from_wave_file('laugh.wav')
+                        play_object = wave_object.play()
+                        play_object.wait_done()
                     break
 
 
@@ -71,5 +74,4 @@ btn = Button(window, text="Click Me", command=threading)
 btn.grid(column=2, row=0)
 window.mainloop()
 
-# todo  remove textbox and button once alarm is set
 # todo  change volume of alarm
