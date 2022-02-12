@@ -32,6 +32,7 @@ alarm_time.focus()
 close_alarm = 1
 
 
+
 def threading():
     t1 = Thread(target=clicked)
     t1.start()
@@ -78,12 +79,11 @@ def clicked():
 
 def quitting():
     global close_alarm
+    sa.stop_all()
     close_alarm = 0
+    lbl.configure(text=f"Alarm Stopped! Have a great day!")
 
 
 btn = Button(window, text="Set Alarm", command=threading)
 btn.grid(column=2, row=0)
 window.mainloop()
-
-
-# todo make quitting() stop the audio on click
