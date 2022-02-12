@@ -29,15 +29,12 @@ alarm_time = Entry(window, width=20)
 alarm_time.grid(column=1, row=0)
 alarm_time.focus()
 
+close_alarm = 1
+
 
 def threading():
     t1 = Thread(target=clicked)
     t1.start()
-
-
-def threading2():
-    t2 = Thread(target=quitting)
-    t2.start()
 
 
 def clicked():
@@ -69,18 +66,24 @@ def clicked():
             if alarm_min == current_min:
                 if alarm_sec <= current_sec:
                     lbl.configure(text="Wake Up!")
-                    btn2 = Button(window, text="Stop Alarm!", command=threading2)
+                    btn2 = Button(window, text="Stop Alarm!", command=quitting)
                     btn2.grid(column=2, row=0)
-                    while True:
+
+                    while close_alarm:
                         wave_object = sa.WaveObject.from_wave_file('laugh.wav')
                         play_object = wave_object.play()
                         play_object.wait_done()
+                    break
 
 
 def quitting():
-    sys.exit()
+    global close_alarm
+    close_alarm = 0
 
 
 btn = Button(window, text="Set Alarm", command=threading)
 btn.grid(column=2, row=0)
 window.mainloop()
+
+
+# todo make quitting() stop the audio on click
