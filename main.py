@@ -3,6 +3,7 @@ import time
 from tkinter import *
 from threading import *
 import simpleaudio as sa
+import sys
 
 
 def validate_time(alarm_time):
@@ -34,6 +35,11 @@ def threading():
     t1.start()
 
 
+def threading2():
+    t2 = Thread(target=quitting)
+    t2.start()
+
+
 def clicked():
     abc = None
     while True:
@@ -63,15 +69,18 @@ def clicked():
             if alarm_min == current_min:
                 if alarm_sec <= current_sec:
                     lbl.configure(text="Wake Up!")
-                    for i in range(2):
+                    btn2 = Button(window, text="Stop Alarm!", command=threading2)
+                    btn2.grid(column=2, row=0)
+                    while True:
                         wave_object = sa.WaveObject.from_wave_file('laugh.wav')
                         play_object = wave_object.play()
                         play_object.wait_done()
-                    break
 
 
-btn = Button(window, text="Click Me", command=threading)
+def quitting():
+    sys.exit()
+
+
+btn = Button(window, text="Set Alarm", command=threading)
 btn.grid(column=2, row=0)
 window.mainloop()
-
-# todo  change volume of alarm
