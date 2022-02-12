@@ -21,7 +21,7 @@ def validate_time(alarm_time):
 
 window = Tk()
 window.title("Alarm Clock")
-window.geometry('400x400')
+window.geometry('600x400')
 lbl = Label(window, text="Enter time in 'HH:MM:SS' format: ")
 lbl.grid(column=0, row=0)
 alarm_time = Entry(window, width=20)
@@ -35,13 +35,18 @@ def threading():
 
 
 def clicked():
+    abc = None
     while True:
+        if abc is not None:
+            alarm = abc
         alarm = alarm_time.get()
         validate = validate_time(alarm.lower())
         if validate != "ok":
-            lbl.configure(text=validate)
+            abc = input(lbl.configure(text=validate))
         else:
             lbl.configure(text=f"Setting alarm for {alarm}...")
+            alarm_time.grid_forget()
+            btn.grid_forget()
             break
     alarm_hour = alarm[0:2]
     alarm_min = alarm[3:5]
@@ -65,3 +70,6 @@ def clicked():
 btn = Button(window, text="Click Me", command=threading)
 btn.grid(column=2, row=0)
 window.mainloop()
+
+# todo  remove textbox and button once alarm is set
+# todo  change volume of alarm
