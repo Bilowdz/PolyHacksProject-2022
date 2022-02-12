@@ -3,9 +3,6 @@ import time
 from tkinter import *
 from threading import *
 import simpleaudio as sa
-
-
-# ===========================================================================================================
 import unblockme
 
 
