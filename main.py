@@ -5,6 +5,10 @@ from threading import *
 import simpleaudio as sa
 
 
+# ===========================================================================================================
+import unblockme
+
+
 def validate_time(time_to_validate):
     if len(time_to_validate) != 8:
         return "Invalid time format! Please try again (HH:MM:SS)."
@@ -67,7 +71,6 @@ def clicked():
                     lbl.configure(text="Wake Up!")
                     btn2 = Button(window, text="Stop Alarm!", command=quitting)
                     btn2.grid(column=2, row=0)
-
                     while close_alarm:
                         wave_object = sa.WaveObject.from_wave_file('laugh.wav')
                         play_object = wave_object.play()
@@ -76,6 +79,7 @@ def clicked():
 
 
 def quitting():
+    unblockme.playing()
     global close_alarm
     sa.stop_all()
     close_alarm = 0
