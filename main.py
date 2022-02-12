@@ -7,6 +7,7 @@ from tkinter import *
 from threading import *
 import simpleaudio as sa
 import unblockme
+import whackamole
 
 
 def validate_time(time_to_validate):
@@ -41,7 +42,7 @@ def threading():
 
 
 def threading2():
-    t2 = Thread(target=unblockme.playing)
+    t2 = Thread(target=whackamole.playing)
     t2.start()
     btn2 = Button(window, text="Stop Alarm!", command=quitting)
     btn2.grid(column=2, row=0)
