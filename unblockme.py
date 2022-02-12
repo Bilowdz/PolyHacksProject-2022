@@ -134,7 +134,8 @@ def playing():
             pilt(neliteist.x, neliteist.y, "200100blokk_tav.png")
 
             if not gamePlay:
-                pilt(0, 0, "voit.png")
+                # pilt(0, 0, "voit.png")
+                quit()
             pygame.display.update()
             clock.tick(60)
 

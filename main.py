@@ -40,6 +40,13 @@ def threading():
     t1.start()
 
 
+def threading2():
+    t2 = Thread(target=unblockme.playing)
+    t2.start()
+    btn2 = Button(window, text="Stop Alarm!", command=quitting)
+    btn2.grid(column=2, row=0)
+
+
 def clicked():
     abc = None
     while True:
@@ -69,7 +76,7 @@ def clicked():
             if alarm_min == current_min:
                 if alarm_sec <= current_sec:
                     lbl.configure(text="Wake Up!")
-                    btn2 = Button(window, text="Stop Alarm!", command=quitting)
+                    btn2 = Button(window, text="Stop Alarm!", command=threading2)
                     btn2.grid(column=2, row=0)
                     while close_alarm:
                         wave_object = sa.WaveObject.from_wave_file('laugh.wav')
@@ -79,7 +86,6 @@ def clicked():
 
 
 def quitting():
-    unblockme.playing()
     global close_alarm
     sa.stop_all()
     close_alarm = 0
