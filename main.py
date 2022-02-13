@@ -1,6 +1,8 @@
 # the unblockme.py was implemented from https://github.com/KentZuntov/Unblock-Me
 # the whackamole.py was implemented from https://github.com/sonlexqt/whack-a-mole
 # the spaceinvaders.py was implemented from https://github.com/leerob/space-invaders
+# the rpsgame.py was implemented from
+# the speedtyping.py was implemented from https://github.com/codecravings/Speed-Typing-Test-Python
 
 from datetime import datetime
 import time
@@ -11,6 +13,7 @@ import simpleaudio as sa
 
 import rpsgame
 import spaceinvaders
+import speedtyping
 import unblockme
 import whackamole
 
@@ -74,6 +77,13 @@ def threading5():
     btn2.grid(column=2, row=0)
 
 
+def threading6():
+    t6 = Thread(target=speedtyping.playing)
+    t6.start()
+    btn2 = Button(window, text="Stop Alarm!", command=quitting)
+    btn2.grid(column=2, row=0)
+
+
 def clicked():
     abc = None
     while True:
@@ -102,7 +112,8 @@ def clicked():
         if alarm_hour == current_hour:
             if alarm_min == current_min:
                 if alarm_sec <= current_sec:
-                    value = randint(0, 3)
+                    value = randint(0, 4)
+                    value = 4
                     print(value)
                     lbl.configure(text="Wake Up!")
                     if value == 0:
@@ -116,6 +127,9 @@ def clicked():
                         btn2.grid(column=2, row=0)
                     elif value == 3:
                         btn2 = Button(window, text="Stop Alarm!", command=threading5)
+                        btn2.grid(column=2, row=0)
+                    elif value == 4:
+                        btn2 = Button(window, text="Stop Alarm!", command=threading6)
                         btn2.grid(column=2, row=0)
                     while close_alarm:
                         wave_object = sa.WaveObject.from_wave_file('laugh.wav')
