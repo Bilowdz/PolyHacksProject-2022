@@ -1,5 +1,4 @@
 # the unblockme.py was implemented from https://github.com/KentZuntov/Unblock-Me
-# the whackamole.py was implemented from https://github.com/akshgpt7/whac-a-mole
 
 from datetime import datetime
 import time
@@ -85,6 +84,7 @@ def clicked():
             if alarm_min == current_min:
                 if alarm_sec <= current_sec:
                     value = randint(0, 1)
+                    value = 1
                     lbl.configure(text="Wake Up!")
                     if value == 0:
                         btn2 = Button(window, text="Stop Alarm!", command=threading2)

@@ -1,11 +1,8 @@
 import pygame
-import time
 
 
 def playing():
     pygame.init()
-    # võit_sound = pygame.mixer.Sound("unblockme.voit.wav")
-    # pygame.mixer.music.load("Inspiring - and.mp3")
 
     display_width = 640
     display_height = 700
@@ -49,7 +46,6 @@ def playing():
         gameDisplay.blit(image, (x, y))
 
     def game_loop():
-        # pygame.mixer.music.play(-1)
         gameExit = False
         gamePlay = True
         current_block = None
