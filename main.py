@@ -1,7 +1,7 @@
 # the unblockme.py was implemented from https://github.com/KentZuntov/Unblock-Me
 # the whackamole.py was implemented from https://github.com/sonlexqt/whack-a-mole
 # the spaceinvaders.py was implemented from https://github.com/leerob/space-invaders
-# the rpsgame.py was implemented from
+# the rpsgame.py was implemented from https://github.com/seekpl/rps-game
 # the speedtyping.py was implemented from https://github.com/codecravings/Speed-Typing-Test-Python
 
 from datetime import datetime
@@ -113,7 +113,6 @@ def clicked():
             if alarm_min == current_min:
                 if alarm_sec <= current_sec:
                     value = randint(0, 4)
-                    value = 4
                     print(value)
                     lbl.configure(text="Wake Up!")
                     if value == 0:
