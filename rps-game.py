@@ -1,7 +1,6 @@
 import random
 import pygame
 
-
 class Button():
     def __init__(self, x, y, pos, width, height):
         self.x = x
@@ -19,8 +18,9 @@ class Button():
 
 
 class RpsGame():
+    pygame.init()
     def __init__(self):
-        pygame.init()
+
 
         self.screen = pygame.display.set_mode((960, 640))
         pygame.display.set_caption("RPS Smasher")
@@ -88,14 +88,11 @@ class RpsGame():
 
         if pl == "rock" and pc == "paper" or pl == "paper" and pc == "scissors" or pl == "scissors" and pc == "rock":
             self.pc_score += 1
-            self.pl_score -= self.pl_score
         elif pl == pc:
             pass
         else:
             self.pl_score += 1
 
-        if self.pl_score >= 3:
-            pygame.quit()
 
         return self.pl_score
 
@@ -108,14 +105,11 @@ class RpsGame():
 
         if pl == "rock" and pc == "paper" or pl == "paper" and pc == "scissors" or pl == "scissors" and pc == "rock":
             self.pc_score += 1
-            self.pl_score = 0
         elif pl == pc:
             pass
         else:
             self.pl_score += 1
 
-        if self.pl_score >= 3:
-            pygame.quit()
 
         return self.pc_score
 
@@ -149,7 +143,12 @@ class RpsGame():
 
                         self.pl_score += rps_game.pl_score_cache()
                         self.pc_score += rps_game.pc_score_cache()
-                        self.text = self.font.render(f"{self.pl_score} : {self.pc_score}", True, (255, 255, 255))
+                        if self.pc_score > 0:
+                            self.pl_score = 0
+                            self.pc_score = 0
+                        if self.pl_score >= 3:
+                            pygame.quit()
+                    self.text = self.font.render(f"{self.pl_score} : {self.pc_score}", True, (255, 255, 255))
 
             pygame.display.flip()
             clock.tick(30)
