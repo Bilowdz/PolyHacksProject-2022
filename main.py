@@ -1,8 +1,13 @@
+# the unblockme.py was implemented from https://github.com/KentZuntov/Unblock-Me
+
 from datetime import datetime
 import time
 from tkinter import *
 from threading import *
+from random import randint
 import simpleaudio as sa
+import unblockme
+import whackamole
 
 
 def validate_time(time_to_validate):
@@ -36,6 +41,20 @@ def threading():
     t1.start()
 
 
+def threading2():
+    t2 = Thread(target=unblockme.playing)
+    t2.start()
+    btn2 = Button(window, text="Stop Alarm!", command=quitting)
+    btn2.grid(column=2, row=0)
+
+
+def threading3():
+    t3 = Thread(target=whackamole.playing)
+    t3.start()
+    btn2 = Button(window, text="Stop Alarm!", command=quitting)
+    btn2.grid(column=2, row=0)
+
+
 def clicked():
     abc = None
     while True:
@@ -64,10 +83,15 @@ def clicked():
         if alarm_hour == current_hour:
             if alarm_min == current_min:
                 if alarm_sec <= current_sec:
+                    value = randint(0, 1)
+                    value = 1
                     lbl.configure(text="Wake Up!")
-                    btn2 = Button(window, text="Stop Alarm!", command=quitting)
-                    btn2.grid(column=2, row=0)
-
+                    if value == 0:
+                        btn2 = Button(window, text="Stop Alarm!", command=threading2)
+                        btn2.grid(column=2, row=0)
+                    elif value == 1:
+                        btn2 = Button(window, text="Stop Alarm!", command=threading3)
+                        btn2.grid(column=2, row=0)
                     while close_alarm:
                         wave_object = sa.WaveObject.from_wave_file('laugh.wav')
                         play_object = wave_object.play()
