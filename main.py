@@ -94,8 +94,8 @@ def clicked():
         if alarm_hour == current_hour:
             if alarm_min == current_min:
                 if alarm_sec <= current_sec:
-                    value = randint(0, 1)
-                    value = 2
+                    value = randint(0, 2)
+                    print(value)
                     lbl.configure(text="Wake Up!")
                     if value == 0:
                         btn2 = Button(window, text="Stop Alarm!", command=threading2)
