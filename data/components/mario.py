@@ -1,5 +1,8 @@
 __author__ = 'justinarmstrong'
 
+import sys
+
+import pygame
 import pygame as pg
 from .. import setup, tools
 from .. import constants as c
@@ -565,7 +568,7 @@ class Mario(pg.sprite.Sprite):
                     setup.SFX['small_jump'].play()
                 self.state = c.JUMP
                 if self.x_vel > 4.5 or self.x_vel < -4.5:
-                    self.y_vel = c.JUMP_VEL - .5
+                    self.y_vel = c.JUMP_VEL - 1.5
                 else:
                     self.y_vel = c.JUMP_VEL
 
@@ -982,7 +985,8 @@ class Mario(pg.sprite.Sprite):
                 self.state = c.END_OF_LEVEL_FALL
             else:
                 self.state = c.WALKING_TO_CASTLE
-
+                pygame.quit()
+                sys.exit()
 
     def set_state_to_bottom_of_pole(self):
         """Sets Mario to the BOTTOM_OF_POLE state"""
@@ -994,6 +998,7 @@ class Mario(pg.sprite.Sprite):
             self.rect.x -= 10
         self.flag_pole_timer = 0
         self.state = c.BOTTOM_OF_POLE
+
 
 
     def walking_to_castle(self):
