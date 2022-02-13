@@ -1,5 +1,6 @@
 # the unblockme.py was implemented from https://github.com/KentZuntov/Unblock-Me
 # the whackamole.py was implemented from https://github.com/sonlexqt/whack-a-mole
+# the spaceinvaders.py was implemented from https://github.com/leerob/space-invaders
 
 from datetime import datetime
 import time
@@ -9,6 +10,7 @@ from random import randint
 import simpleaudio as sa
 
 import rpsgame
+import spaceinvaders
 import unblockme
 import whackamole
 
@@ -61,6 +63,13 @@ def threading3():
 def threading5():
     t5 = Thread(target=rpsgame.playing)
     t5.start()
+	btn2 = Button(window, text="Stop Alarm!", command=quitting)
+    btn2.grid(column=2, row=0)
+	
+	
+def threading4():
+    t3 = Thread(target=spaceinvaders.playing)
+    t3.start()
     btn2 = Button(window, text="Stop Alarm!", command=quitting)
     btn2.grid(column=2, row=0)
 
@@ -93,8 +102,8 @@ def clicked():
         if alarm_hour == current_hour:
             if alarm_min == current_min:
                 if alarm_sec <= current_sec:
-                    value = randint(0, 1)
-                    value = 3
+                    value = randint(0, 2)
+                    print(value)
                     lbl.configure(text="Wake Up!")
                     if value == 0:
                         btn2 = Button(window, text="Stop Alarm!", command=threading2)
@@ -102,9 +111,12 @@ def clicked():
                     elif value == 1:
                         btn2 = Button(window, text="Stop Alarm!", command=threading3)
                         btn2.grid(column=2, row=0)
+					elif value == 2:
+                        btn2 = Button(window, text="Stop Alarm!", command=threading4)
+                        btn2.grid(column=2, row=0)
                     elif value == 3:
                         btn2 = Button(window, text="Stop Alarm!", command=threading5)
-                        btn2.grid(column=2, row=0)
+						btn2.grid(column=2, row=0)
                     while close_alarm:
                         wave_object = sa.WaveObject.from_wave_file('laugh.wav')
                         play_object = wave_object.play()
