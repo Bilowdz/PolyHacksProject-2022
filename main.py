@@ -7,6 +7,8 @@ from tkinter import *
 from threading import *
 from random import randint
 import simpleaudio as sa
+
+import rpsgame
 import unblockme
 import whackamole
 
@@ -56,6 +58,13 @@ def threading3():
     btn2.grid(column=2, row=0)
 
 
+def threading5():
+    t5 = Thread(target=rpsgame.playing)
+    t5.start()
+    btn2 = Button(window, text="Stop Alarm!", command=quitting)
+    btn2.grid(column=2, row=0)
+
+
 def clicked():
     abc = None
     while True:
@@ -85,13 +94,16 @@ def clicked():
             if alarm_min == current_min:
                 if alarm_sec <= current_sec:
                     value = randint(0, 1)
-                    value = 1
+                    value = 3
                     lbl.configure(text="Wake Up!")
                     if value == 0:
                         btn2 = Button(window, text="Stop Alarm!", command=threading2)
                         btn2.grid(column=2, row=0)
                     elif value == 1:
                         btn2 = Button(window, text="Stop Alarm!", command=threading3)
+                        btn2.grid(column=2, row=0)
+                    elif value == 3:
+                        btn2 = Button(window, text="Stop Alarm!", command=threading5)
                         btn2.grid(column=2, row=0)
                     while close_alarm:
                         wave_object = sa.WaveObject.from_wave_file('laugh.wav')
