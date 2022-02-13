@@ -5,8 +5,6 @@ import time
 import random
 
 
-# 950 x 500
-
 class Game:
 
     def __init__(self):
