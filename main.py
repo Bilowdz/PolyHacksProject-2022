@@ -19,6 +19,7 @@ from threading import *
 from random import randint
 import simpleaudio as sa
 
+import mario_level_1
 import rpsgame
 import spaceinvaders
 import speedtyping
@@ -91,6 +92,12 @@ def threading6():
     btn2 = Button(window, text="Stop Alarm!", command=quitting)
     btn2.grid(column=2, row=0)
 
+def threading7():
+    t7 = Thread(target=mario_level_1.playing)
+    t7.start()
+    btn2 = Button(window, text="Stop Alarm!", command=quitting)
+    btn2.grid(column=2, row=0)
+
 
 def clicked():
     abc = None
@@ -121,6 +128,7 @@ def clicked():
             if alarm_min == current_min:
                 if alarm_sec <= current_sec:
                     value = randint(0, 4)
+                    value = 5
                     print(value)
                     lbl.configure(text="Wake Up!")
                     if value == 0:
@@ -137,6 +145,9 @@ def clicked():
                         btn2.grid(column=2, row=0)
                     elif value == 4:
                         btn2 = Button(window, text="Stop Alarm!", command=threading6)
+                        btn2.grid(column=2, row=0)
+                    elif value == 5:
+                        btn2 = Button(window, text="Stop Alarm!", command=threading7)
                         btn2.grid(column=2, row=0)
                     while close_alarm:
                         wave_object = sa.WaveObject.from_wave_file('laugh.wav')
