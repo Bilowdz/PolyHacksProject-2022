@@ -14,7 +14,7 @@ def playing():
             self.MOLE_HEIGHT = 81
             self.FONT_SIZE = 31
             self.FONT_TOP_MARGIN = 26
-            self.LEVEL_SCORE_GAP = 4
+            self.LEVEL_SCORE_GAP = 2
             self.LEFT_MOUSE_BUTTON = 1
             self.GAME_TITLE = "Whack A Mole - Game Programming - Assignment 1"
             # Initialize player's score, number of missed hits and level
@@ -76,7 +76,8 @@ def playing():
             mouse_y = mouse_position[1]
             current_hole_x = current_hole_position[0]
             current_hole_y = current_hole_position[1]
-            if (mouse_x > current_hole_x) and (mouse_x < current_hole_x + self.MOLE_WIDTH) and (mouse_y > current_hole_y) and (mouse_y < current_hole_y + self.MOLE_HEIGHT):
+            if (mouse_x > current_hole_x) and (mouse_x < current_hole_x + self.MOLE_WIDTH) and (
+                    mouse_y > current_hole_y) and (mouse_y < current_hole_y + self.MOLE_HEIGHT):
                 return True
             else:
                 return False
@@ -123,7 +124,7 @@ def playing():
                 self.mole[i].set_colorkey((0, 0, 0))
                 self.mole[i] = self.mole[i].convert_alpha()
 
-            while loop:
+            while self.score < 10:
                 for event in pygame.event.get():
                     if event.type == pygame.QUIT:
                         loop = False
@@ -143,6 +144,7 @@ def playing():
                             self.update()
                         else:
                             self.misses += 1
+                            self.score = 0
                             self.update()
 
                 if num > 5:
@@ -177,13 +179,14 @@ def playing():
                         num -= 1
                         is_down = True
                         self.soundEffect.playPop()
-                        interval = self.get_interval_by_level(initial_interval)  # get the newly decreased interval value
+                        interval = self.get_interval_by_level(
+                            initial_interval)  # get the newly decreased interval value
                     else:
                         interval = 0.1
                     cycle_time = 0
                 # Update the display
                 pygame.display.flip()
-
+            pygame.quit()
 
     # The Debugger class - use this class for printing out debugging information
     class Debugger:
@@ -193,7 +196,6 @@ def playing():
         def log(self, message):
             if self.mode is "debug":
                 print("> DEBUG: " + str(message))
-
 
     class SoundEffect:
         def __init__(self):
