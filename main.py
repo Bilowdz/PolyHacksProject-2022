@@ -4,6 +4,14 @@
 # the rpsgame.py was implemented from https://github.com/seekpl/rps-game
 # the speedtyping.py was implemented from https://github.com/codecravings/Speed-Typing-Test-Python
 
+# The main.py was written and implemented by Simon Bilodeau, Pate Lauzon, and Ryan Haniff for the Polyhacks 2022
+# event. This program is an alarm clock that will not stop until a game is won. The game that needs to be played
+# is chosen at random within the games that have been implemented from seperate .py files. The goal of this program
+# is for the user to be forced to use their brain to close their alarm, forcing the brain to stay awake once the
+# game has been played.
+
+# Feel free to use this code in any other project.
+
 from datetime import datetime
 import time
 from tkinter import *
