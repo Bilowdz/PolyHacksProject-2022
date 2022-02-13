@@ -1,4 +1,5 @@
 # the unblockme.py was implemented from https://github.com/KentZuntov/Unblock-Me
+# the whackamole.py was implemented from https://github.com/sonlexqt/whack-a-mole
 
 from datetime import datetime
 import time
