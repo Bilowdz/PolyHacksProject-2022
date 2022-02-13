@@ -1,5 +1,6 @@
 # the unblockme.py was implemented from https://github.com/KentZuntov/Unblock-Me
 # the whackamole.py was implemented from https://github.com/sonlexqt/whack-a-mole
+# the spaceinvaders.py was implemented from https://github.com/leerob/space-invaders
 
 from datetime import datetime
 import time
@@ -8,6 +9,7 @@ from threading import *
 from random import randint
 import simpleaudio as sa
 
+import spaceinvaders
 import unblockme
 import whackamole
 
@@ -58,7 +60,7 @@ def threading3():
 
 
 def threading4():
-    t3 = Thread(target=unblockme.playing)
+    t3 = Thread(target=spaceinvaders.playing)
     t3.start()
     btn2 = Button(window, text="Stop Alarm!", command=quitting)
     btn2.grid(column=2, row=0)
