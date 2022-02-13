@@ -8,7 +8,6 @@ from threading import *
 from random import randint
 import simpleaudio as sa
 
-import spaceinvaders
 import unblockme
 import whackamole
 
@@ -59,7 +58,7 @@ def threading3():
 
 
 def threading4():
-    t3 = Thread(target=spaceinvaders.playing)
+    t3 = Thread(target=unblockme.playing)
     t3.start()
     btn2 = Button(window, text="Stop Alarm!", command=quitting)
     btn2.grid(column=2, row=0)
