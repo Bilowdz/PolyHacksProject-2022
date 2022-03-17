@@ -7,6 +7,8 @@ This torture device is meant to force the user to wake up quickly and efficientl
 
 This program was developed by Simon Bilodeau, Ryan Hanniff, and Pate Lauzon for the PolyHacks 2022 event. Feel free to use any part of this project for yourself if you somehow find any use for it.
 
+Its presentation can be viewed at the following link: https://www.youtube.com/watch?v=2JQ4ITusCEA
+
 
 
 The alarm clock and random game system was implemented by us, while the games were found here on github.
